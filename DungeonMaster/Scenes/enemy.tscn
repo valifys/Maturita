@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://lofrdmt8t1tb"]
+
+[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_4lx5v"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ompw0"]
+load_path = "res://.godot/imported/Enemies 1x no bg.png-8f28bfae457920263a91336807979ac4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtbw7"]
+atlas = SubResource("CompressedTexture2D_ompw0")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2x26"]
+atlas = SubResource("CompressedTexture2D_ompw0")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phpij"]
+atlas = SubResource("CompressedTexture2D_ompw0")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_325lk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtbw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2x26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phpij")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sbwur"]
+radius = 3.36341
+
+[node name="Slime" type="Area2D"]
+script = ExtResource("1_4lx5v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(25, -16)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_325lk")
+autoplay = "default"
+frame_progress = 0.75648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(25, -12)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_sbwur")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(25, -12)
+target_position = Vector2(23, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(25, -12)
+rotation = 3.1396
+target_position = Vector2(23, 0)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvb5wcp7ku6r"]
+
+[ext_resource type="Texture2D" uid="uid://b73dgpc7btwcq" path="res://Sprites/Itch Package/Tilemap/Tilemap 1x no bg.png" id="1_tj5tc"]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(556, 302)
+scale = Vector2(22.1875, 12.6458)
+texture = ExtResource("1_tj5tc")
+region_enabled = true
+region_rect = Rect2(31.8604, 40.8158, 16.2157, 6.36718)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(734, 340, 734, 264, 712, 264, 712, 277, 401, 277, 401, 264, 379, 264, 379, 340, 401, 340, 401, 327, 712, 327, 712, 340)

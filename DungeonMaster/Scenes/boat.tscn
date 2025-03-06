@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dihvswyc22abg"]
+
+[ext_resource type="Texture2D" uid="uid://dysdhfatostno" path="res://Sprites/boat.png" id="1_03jpr"]
+
+[node name="Node2D" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(71, 3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_03jpr")
+hframes = 4
+vframes = 2
+frame = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(16, -8)
+polygon = PackedVector2Array(18, 25, 93, 25, 71, 39, 38, 39, 27, 31)
