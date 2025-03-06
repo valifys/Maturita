@@ -15,3 +15,5 @@ func _process(delta):
 			text += text_to_display[current_index]
 			current_index += 1
 			visible_characters += 1
+
+#ahoj
