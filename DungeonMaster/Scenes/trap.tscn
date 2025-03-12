@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://brqdrkig383jj"]
+
+[ext_resource type="Texture2D" uid="uid://rj63logoqwlc" path="res://Sprites/Foozle_2DTR0001_Pixel_Trap_Pack/Ceiling Trap/PNGs/Ceiling Trap - Level 1.png" id="1_re4e0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq2a7"]
+size = Vector2(32, 8)
+
+[node name="Trap" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_re4e0")
+hframes = 14
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_vq2a7")
