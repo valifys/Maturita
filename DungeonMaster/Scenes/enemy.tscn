@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://lofrdmt8t1tb"]
 
-[ext_resource type="Script" path="res://Scenes/enemy.gd" id="1_4lx5v"]
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_4lx5v"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ompw0"]
 load_path = "res://.godot/imported/Enemies 1x no bg.png-8f28bfae457920263a91336807979ac4.ctex"

@@ -7,7 +7,7 @@ extends Node
 #func _ready():
 #	var headers = ["Content-Type: application/json"]
 #	http.request_completed.connect(_get_auto)
-#	http.request("http://127.0.0.1:5000/get_auto", headers)
+#	http.request("http://127.0.0.1:5000/hraci", headers)
 #print("ddddd")
 
 #func _get_auto(result, response_code, headers, body):

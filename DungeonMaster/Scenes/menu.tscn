@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_h4wyn"]
 [ext_resource type="Texture2D" uid="uid://bsegcwtycn4wy" path="res://Sprites/cavesofgallet/cavesofgallet_tiles.png" id="2_kmv0v"]
 [ext_resource type="FontFile" uid="uid://doeucwsjnxsn5" path="res://Fonts/Minecraftia-Regular.ttf" id="3_jypas"]
-[ext_resource type="Script" path="res://Scenes/DungeonMaster.gd" id="4_wfvt1"]
+[ext_resource type="Script" path="res://Scripts/DungeonMaster.gd" id="4_wfvt1"]
 
 [sub_resource type="Gradient" id="Gradient_mcmi1"]
 offsets = PackedFloat32Array(1)
