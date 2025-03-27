@@ -10,6 +10,17 @@ db_config = {
     'password': 'spsnet', 
     'database': 'vyuka6'
 }
+def validation(username, password):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('''SELECT password FROM hraci WHERE username=%s''', (username,))
+    correct_password=cursor.fetchone()[0]
+    if correct_password==password:
+        return True
+    else:
+        return False
+
+
 
 # Funkce pro vytvoření připojení k databázi
 def get_db_connection():
@@ -31,9 +42,37 @@ def create_table():
     cursor.close()
     conn.close()
 
+def get_users():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute('''
+        SELECT username, score FROM hraci ORDER BY score DESC LIMIT 2
+    ''')
+    users=cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return users
+
+def create_user(username, password):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO hraci (username, password)
+                   VALUES(%s, %s)
+    ''',(username, password,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
 # Vytvoření tabulky při spuštění aplikace
 with app.app_context():
     create_table()
+
+@app.route('/users', methods=['GET'])
+def get_users_endpoint():
+    if request.method=="GET":
+        users = get_users()
+        return jsonify({'data': users})
 
 # Endpoint pro získání skóre hráče
 @app.route('/skore/<jmeno>', methods=['GET'])
@@ -68,6 +107,29 @@ def update_skore(jmeno):
     cursor.close()
     conn.close()
     return jsonify({'jmeno': jmeno, 'skore': nove_skore})
+
+@app.route("/login", methods=["POST"])
+def login():
+    if request.method=="POST":
+        data=request.get_json()
+        username=data.get("username")
+        password=data.get("password")
+        auth=validation(username, password)
+        if auth:
+            return jsonify({"success":"uzivatel prihlasen","username":username})
+        else: 
+            return jsonify({"chyba":"spatne jmeno nebo heslo"}), 403
+        
+
+
+@app.route("/register", methods=["POST"])
+def register():
+    if request.method=="POST":
+        data=request.get_json()
+        username=data.get("username")
+        password=data.get("password")
+        create_user(username, password)
+        return jsonify({"success":"uzivatel uspesne registrovan"})
 
 if __name__ == '__main__':
     app.run(debug=True)

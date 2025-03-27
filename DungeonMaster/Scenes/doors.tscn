@@ -145,4 +145,4 @@ layer_0/tile_data = PackedInt32Array(524312, 0, 2, 655384, 0, 2, 720920, 196608,
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-541, -202)
 scale = Vector2(3.5, 3.5)
-polygon = PackedVector2Array(192, 55.7143, 231.714, 55.7143, 232, 120, 212.857, 123.714, 192, 120)
+polygon = PackedVector2Array(192, 55.7143, 231.714, 55.7143, 232, 120, 212.857, 125.714, 192, 120)

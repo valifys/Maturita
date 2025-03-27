@@ -5,3 +5,4 @@ var timemins
 var timemilisecs 
 var timesecs 
 var timer = true
+var username
