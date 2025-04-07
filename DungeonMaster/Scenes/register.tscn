@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ba2lxs3bevs0i"]
 
-[ext_resource type="Script" path="res://Register.gd" id="1_efm3b"]
+[ext_resource type="Script" path="res://Scripts/Register.gd" id="1_efm3b"]
 [ext_resource type="Texture2D" uid="uid://bsegcwtycn4wy" path="res://Sprites/cavesofgallet/cavesofgallet_tiles.png" id="2_j5vo6"]
 [ext_resource type="FontFile" uid="uid://doeucwsjnxsn5" path="res://Fonts/Minecraftia-Regular.ttf" id="3_25s8f"]
 

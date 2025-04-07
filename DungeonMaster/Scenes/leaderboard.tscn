@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b6j8e1cwrg7e0"]
 
-[ext_resource type="Script" path="res://Leaderboard.gd" id="1_gg5f6"]
+[ext_resource type="Script" path="res://Scripts/Leaderboard.gd" id="1_gg5f6"]
 [ext_resource type="Texture2D" uid="uid://bsegcwtycn4wy" path="res://Sprites/cavesofgallet/cavesofgallet_tiles.png" id="2_t8w0k"]
 [ext_resource type="FontFile" uid="uid://doeucwsjnxsn5" path="res://Fonts/Minecraftia-Regular.ttf" id="3_gy1r2"]
 
@@ -223,8 +223,6 @@ text = "4."
 layout_mode = 2
 text = "5."
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
-
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -238,5 +236,7 @@ theme_override_font_sizes/font_size = 26
 text = "Back"
 flat = true
 
-[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

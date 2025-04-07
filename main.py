@@ -75,38 +75,33 @@ def get_users_endpoint():
         return jsonify({'data': users})
 
 # Endpoint pro získání skóre hráče
-@app.route('/skore/<jmeno>', methods=['GET'])
+@app.route('/score/<jmeno>', methods=['GET'])
 def get_skore(jmeno):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute('SELECT * FROM hraci WHERE jmeno = %s', (jmeno,))
+    cursor.execute('SELECT * FROM hraci WHERE username = %s', (jmeno,))
     hrac = cursor.fetchone()
     cursor.close()
     conn.close()
     if hrac:
-        return jsonify({'jmeno': hrac['jmeno'], 'skore': hrac['skore']})
+        return jsonify({'username': hrac['username'], 'score': hrac['score']})
     else:
         return jsonify({'chyba': 'Hráč nenalezen'}), 404
 
 # Endpoint pro aktualizaci skóre hráče
-@app.route('/skore/<jmeno>', methods=['PUT'])
+@app.route('/score/<jmeno>', methods=['PUT'])
 def update_skore(jmeno):
-    nove_skore = request.json.get('skore')
+    nove_skore = request.json.get('score')
     if nove_skore is None:
         return jsonify({'chyba': 'Chybí skóre'}), 400
 
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM hraci WHERE jmeno = %s', (jmeno,))
-    hrac = cursor.fetchone()
-    if hrac:
-        cursor.execute('UPDATE hraci SET skore = %s WHERE jmeno = %s', (nove_skore, jmeno))
-    else:
-        cursor.execute('INSERT INTO hraci (jmeno, skore) VALUES (%s, %s)', (jmeno, nove_skore))
+    cursor.execute("UPDATE hraci SET score = %s WHERE username = %s", (nove_skore, jmeno))
     conn.commit()
     cursor.close()
     conn.close()
-    return jsonify({'jmeno': jmeno, 'skore': nove_skore})
+    return jsonify({'username': jmeno, 'score': nove_skore})
 
 @app.route("/login", methods=["POST"])
 def login():

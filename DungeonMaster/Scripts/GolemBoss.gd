@@ -5,7 +5,6 @@ var direction = 1
 var moving = false
 var timer = 0
 @onready var sprite2D = $AnimatedSprite2D
-@onready var area2D = $Area2D
 
 func _physics_process(delta):
 	if moving:

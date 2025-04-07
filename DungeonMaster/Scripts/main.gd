@@ -1,21 +1,31 @@
 extends Node2D
 
+@onready var music = $AudioStreamPlayer
 @onready var score = $Player/Timer
 var time = 0.0
-@onready var miliseconds = $Player/Camera2D/miliseconds
 @onready var seconds = $Player/Camera2D/seconds
-@onready var minutes = $Player/Camera2D/minutes
+@onready var username = $Player/Camera2D/Player
+
+func _ready():
+	music.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Globals.timer:
 		time += delta
-		var msec = fmod(time,1)*100
-		var secs = fmod(time,60)
-		var mins = fmod(time,3600)/60
-		minutes.text = "%02d:" % int(mins)
+		var secs = fmod(time,400)
 		seconds.text = "%02d." % int(secs)
-		miliseconds.text = "%02d" % int(msec)
 		Globals.timesecs = int(secs)
-		Globals.timemins = int(mins)
-		Globals.timemilisecs = int(msec)
+
+
+func _on_area_2d_body_entered(body):
+	if body is CharacterBody2D:
+		get_tree().change_scene_to_file("res://Scenes/death.tscn")
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+
+
+func _on_button_2_pressed():
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
