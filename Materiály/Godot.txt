@@ -82,3 +82,26 @@ func _init():
 	print("Constructed!")
 	var lv = Something.new()
 	print(lv.a)
+
+extends Node2D
+
+var lives = 3
+onready var lives_label = $LivesLabel
+
+func _ready():
+    update_lives_label()
+
+func update_lives_label():
+    lives_label.text = "Lives: " + str(lives)
+
+func take_damage(damage: int):
+    lives -= damage
+    if lives <= 0:
+        game_over()
+    else:
+        update_lives_label()
+
+func game_over():
+    print("Game Over!")
+    get_tree().paused = true
+
